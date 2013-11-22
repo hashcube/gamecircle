@@ -1,0 +1,12 @@
+{
+    "copyFiles": [
+        "GameCirclePlugin.java"
+    ],
+    "libraries": [
+		"GameCircleSDK"
+    ],
+    "jars": [
+    ],
+    "injectionXML": "manifest.xml",
+	"injectionXSL": "manifest.xsl"
+}

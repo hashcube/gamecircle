@@ -1,0 +1,32 @@
+<!--START_PLUGINS_MANIFEST-->
+	<!--Billing-->
+	<uses-permission android:name="com.android.vending.BILLING"/>
+<!--END_PLUGINS_MANIFEST-->
+<!--START_PLUGINS_APPLICATION-->
+	<activity android:name="com.amazon.ags.html5.overlay.GameCircleUserInterface" 
+	android:theme="@style/GCOverlay" android:hardwareAccelerated="false"></activity>
+	<activity
+	  android:name="com.amazon.identity.auth.device.authorization.AuthorizationActivity"
+	  android:theme="@android:style/Theme.NoDisplay"
+	  android:allowTaskReparenting="true"
+	  android:launchMode="singleTask">
+	  <intent-filter>
+	     <action android:name="android.intent.action.VIEW" />
+	     <category android:name="android.intent.category.DEFAULT" />
+	     <category android:name="android.intent.category.BROWSABLE" />
+	     <data android:host="" android:scheme="amzn" />
+	  </intent-filter>
+	</activity>
+	<activity android:name="com.amazon.ags.html5.overlay.GameCircleAlertUserInterface" 
+	android:theme="@style/GCAlert" android:hardwareAccelerated="false"></activity>
+	<receiver
+	  android:name="com.amazon.identity.auth.device.authorization.PackageIntentReceiver"
+	  android:enabled="true">
+	  <intent-filter>
+	     <action android:name="android.intent.action.PACKAGE_INSTALL" />
+	     <action android:name="android.intent.action.PACKAGE_ADDED" />
+	     <data android:scheme="package" />
+	  </intent-filter>
+	</receiver>	
+<!--END_PLUGINS_APPLICATION-->
+
