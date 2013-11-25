@@ -32,12 +32,11 @@ public class GameCirclePlugin implements IPlugin {
 	Activity _activity;
 
 	public class onWhisperSyncUpdate extends com.tealeaf.event.Event {
-		String max_ms_no;
+		String result_sent;
 
 		public onWhisperSyncUpdate(String result) {
 			super("onWhisperSyncUpdate");
-			//logger.log(result);
-			this.max_ms_no = result;
+			this.result_sent = result;
 		}
 	}
 
@@ -93,35 +92,45 @@ public class GameCirclePlugin implements IPlugin {
 		agsClient.shutdown();
 	}
 
-	public void initWhisperSync(String dummyParam) {
-		//logger.log("{gamecircle-native} Initializing WhisperSync");
+	public void initWhisperSync(final String param_name) {
+		logger.log("{gamecircle-native} Initializing WhisperSync");
 		gameDataMap = AmazonGamesClient.getWhispersyncClient().getGameData();
-		SyncableNumber max_ms_no = gameDataMap.getHighestNumber("max_ms_no");
-		//logger.log("Above is max_ms_no=================");
+		gameDataMap.getHighestNumber(param_name);
 		AmazonGamesClient.getWhispersyncClient().setWhispersyncEventListener(new WhispersyncEventListener() {
 		  public void onNewCloudData() {
-		  	//logger.log("Cloud has new data===============");
-		  	SyncableNumber max_ms_no = gameDataMap.getHighestNumber("max_ms_no");
-		  	//logger.log("The data is");
-		  	//logger.log(max_ms_no.asString());
-		    EventQueue.pushEvent(new onWhisperSyncUpdate(max_ms_no.asString()));
+			SyncableNumber initParamData = gameDataMap.getHighestNumber("max_ms_no");
+		    EventQueue.pushEvent(new onWhisperSyncUpdate(initParamData.asString()));
 		  }
 		});		
 	}
 
-	public void setmax_ms_no(String max_ms_no_val) {
-		//logger.log("Sending max_ms_no=============");
+	public void setNumber(String param) {
+		logger.log("{gamecircle-native} Setting SyncableNumber");
+		final Bundle params = new Bundle();
+	    String name = "";
+	    Integer val = 0;
+	    try {
+			JSONObject ldrData = new JSONObject(param);
+		    Iterator<?> keys = ldrData.keys();
+		    while( keys.hasNext() ){
+		        String key = (String)keys.next();
+				Object o = ldrData.get(key);
+				if(key.equals("name")){
+					name = (String) o;
+					continue;
+				}
+				if(key.equals("val")){
+					val = (Integer) o;
+					continue;
+				}
+				params.putString(key, (String) o);
+	        }
+		} catch(JSONException e) {
+			logger.log("{gamecircle-native} Error in Params of setNumber because "+ e.getMessage());
+		}
 		gameDataMap = AmazonGamesClient.getWhispersyncClient().getGameData();
-		//logger.log("310");
-		SyncableNumber max_ms_no = gameDataMap.getHighestNumber("max_ms_no");
-		//logger.log("310a");
-		//logger.log(max_ms_no_val);
-		//logger.log("310b");
-		//logger.log(max_ms_no.asString());
-		//logger.log("311");
-		max_ms_no.set(max_ms_no_val);
-		//logger.log("312");
-		//logger.log(max_ms_no);
+		SyncableNumber param_name = gameDataMap.getHighestNumber(name);
+		param_name.set(val);
 	}
 
 	public void onNewIntent(Intent intent) {

@@ -13,29 +13,6 @@ function pluginOn(evt, next) {
 		NATIVE.events.registerHandler(evt, next);
 }
 
-function invokeCallbacks(list, clear) {
-	// Pop off the first two arguments and keep the rest
-	var args = Array.prototype.slice.call(arguments);
-	args.shift();
-	args.shift();
-
-	// For each callback,
-	for (var ii = 0; ii < list.length; ++ii) {
-		var next = list[ii];
-
-		// If callback was actually specified,
-		if (next) {
-			// Run it
-			next.apply(null, args);
-		}
-	}
-
-	// If asked to clear the list too,
-	if (clear) {
-		list.length = 0;
-	}
-}
-
 var Gamecircle = Class(function () {
 	this.init = function(opts) {
 		logger.log("{gamecircle} Registering for events on startup");
@@ -57,7 +34,7 @@ var Gamecircle = Class(function () {
 		});
 
 		pluginOn("onWhisperSyncUpdate", function(evt) {
-			logger.log("{gamecircle} WhisperSync updating:", evt.max_ms_no);
+			logger.log("{gamecircle} WhisperSync updating:", evt.result_sent);
 			if (typeof onWhisperSyncUpdate === "function") {
 					//logger.log(JSON.stringify(evt));
 					onWhisperSyncUpdate(evt);
@@ -81,16 +58,18 @@ var Gamecircle = Class(function () {
 		pluginSend("sendScore",param);
 	}
 
-	this.setmax_ms_no = function(max_ms_no_val) {
-		logger.log("{gamecircle} Sending of Max_MS to whispersync");
+	this.setNumber = function(name, val) {
+		logger.log("{gamecircle} Sending of SyncNumber to whispersync");
 
-		pluginSend("setmax_ms_no",max_ms_no_val);
+		var param = {"name":name,"val":val};
+
+		pluginSend("setNumber", param);
 	}
 
-	this.initWhisperSync = function() {
+	this.initWhisperSync = function(param_name) {
 		logger.log("{gamecircle} Initializing WhisperSync");
 
-		pluginSend("initWhisperSync");
+		pluginSend("initWhisperSync", param_name);
 	}
 
 	this.showLeaderBoard = function() {
