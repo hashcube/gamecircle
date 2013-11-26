@@ -58,7 +58,9 @@ public class GameCirclePlugin implements IPlugin {
 	 
 	//list of features your game uses (in this example, achievements and leaderboards)
 	EnumSet<AmazonGamesFeature> myGameFeatures = EnumSet.of(
-	        AmazonGamesFeature.Achievements, AmazonGamesFeature.Leaderboards);
+	        AmazonGamesFeature.Achievements,
+		AmazonGamesFeature.Leaderboards,
+		AmazonGamesFeature.Whispersync);
 
 	public GameCirclePlugin() {
 	}
