@@ -33,11 +33,11 @@ public class GameCirclePlugin implements IPlugin {
 	Context _context;
 	Activity _activity;
 
-	public class onWhisperSyncUpdate extends com.tealeaf.event.Event {
+	public class onSyncUpdate extends com.tealeaf.event.Event {
 		String result_sent;
 
-		public onWhisperSyncUpdate(String result) {
-			super("onWhisperSyncUpdate");
+		public onSyncUpdate(String result) {
+			super("onSyncUpdate");
 			this.result_sent = result;
 		}
 	}
@@ -95,14 +95,14 @@ public class GameCirclePlugin implements IPlugin {
 	public void onDestroy() {
 	}
 
-	public void initWhisperSync(final String param_name) {
-		logger.log("{gamecircle-native} Initializing WhisperSync");
+	public void initSync(final String param_name) {
+		logger.log("{gamecircle-native} Initializing Sync");
 		gameDataMap = AmazonGamesClient.getWhispersyncClient().getGameData();
 		gameDataMap.getHighestNumber(param_name);
 		AmazonGamesClient.getWhispersyncClient().setWhispersyncEventListener(new WhispersyncEventListener() {
 		  public void onNewCloudData() {
 			SyncableNumber initParamData = gameDataMap.getHighestNumber("max_ms_no");
-		    EventQueue.pushEvent(new onWhisperSyncUpdate(initParamData.asString()));
+		    EventQueue.pushEvent(new onSyncUpdate(initParamData.asString()));
 		  }
 		});		
 	}

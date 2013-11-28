@@ -1,6 +1,6 @@
 import util.setProperty as setProperty;
 
-var onWhisperSyncUpdate;
+var onSyncUpdate;
 
 function pluginSend(evt, params) {
 	NATIVE && NATIVE.plugins && NATIVE.plugins.sendEvent &&
@@ -17,27 +17,27 @@ var Gamecircle = Class(function () {
 	this.init = function(opts) {
 		logger.log("{gamecircle} Registering for events on startup");
 
-		setProperty(this, "onWhisperSyncUpdate", {
+		setProperty(this, "onSyncUpdate", {
 			set: function(f) {
 				//logger.log("Am seting it");
 				// If a callback is being set,
 				if (typeof f === "function") {
-					onWhisperSyncUpdate = f;
+					onSyncUpdate = f;
 				} else {
-					onWhisperSyncUpdate = null;
+					onSyncUpdate = null;
 				}
 			},
 			get: function() {
 				//logger.log("Am getting it");
-				return onWhisperSyncUpdate;
+				return onSyncUpdate;
 			}
 		});
 
-		pluginOn("onWhisperSyncUpdate", function(evt) {
-			logger.log("{gamecircle} WhisperSync updating:", evt.result_sent);
-			if (typeof onWhisperSyncUpdate === "function") {
+		pluginOn("onSyncUpdate", function(evt) {
+			logger.log("{gamecircle} Sync updating:", evt.result_sent);
+			if (typeof onSyncUpdate === "function") {
 					//logger.log(JSON.stringify(evt));
-					onWhisperSyncUpdate(evt);
+					onSyncUpdate(evt);
 			}
 		});
 	}
@@ -59,17 +59,17 @@ var Gamecircle = Class(function () {
 	}
 
 	this.setNumber = function(name, val) {
-		logger.log("{gamecircle} Sending of SyncNumber to whispersync");
+		logger.log("{gamecircle} Sending of SyncNumber to sync");
 
 		var param = {"name":name,"val":val};
 
 		pluginSend("setNumber", param);
 	}
 
-	this.initWhisperSync = function(param_name) {
-		logger.log("{gamecircle} Initializing WhisperSync");
+	this.initSync = function(param_name) {
+		logger.log("{gamecircle} Initializing Sync");
 
-		pluginSend("initWhisperSync", param_name);
+		pluginSend("initSync", param_name);
 	}
 
 	this.showLeaderBoard = function() {
