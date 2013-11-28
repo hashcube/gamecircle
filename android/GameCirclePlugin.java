@@ -1,6 +1,8 @@
 package com.tealeaf.plugin.plugins;
 
+import com.amazon.ags.api.AmazonGames;
 import com.amazon.ags.api.AmazonGamesClient;
+import com.amazon.ags.api.overlay.PopUpLocation;
 import com.amazon.ags.api.RequestResponse;
 import com.amazon.ags.api.leaderboards.*;
 import com.amazon.ags.api.achievements.*;
@@ -52,7 +54,8 @@ public class GameCirclePlugin implements IPlugin {
 	        @Override
 	        public void onServiceReady(AmazonGamesClient amazonGamesClient) {
 	            agsClient = amazonGamesClient;
-	            //ready to use GameCircle
+			    PopUpLocation location = PopUpLocation.TOP_CENTER;
+				agsClient.setPopUpLocation(location);
 	        }
 	};
 	 
@@ -87,11 +90,9 @@ public class GameCirclePlugin implements IPlugin {
 	}
 
 	public void onStop() {
-		agsClient.shutdown();
 	}
 
 	public void onDestroy() {
-		agsClient.shutdown();
 	}
 
 	public void initWhisperSync(final String param_name) {
