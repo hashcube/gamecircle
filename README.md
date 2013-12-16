@@ -1,14 +1,19 @@
-gamecircle
-==========
-
 Amazon Gamecircle Plugin for Gameclosure
+=============
+This is a Gameclosure (www.gameclosure.com) plugin for Amazon Game Circle.
 
-This is a plugin for the Gameclosure Game Development Engine for mobile apps. (www.gameclosure.com)
+Features
+-------------
+ * Leaderboard
+ * Achievements
+ * Wispersync (limited)
+ * Support for in game button to show leaderboard
 
-This plugin is for implementing Amazon Gamecircle Plugin for Gameclosure.
+How to Install
+-------------
+clone this repo to '''addons''' folder inside devkit and do following
+```
+$ cd gamecircle
+$ android update project -p android/GameCircleSDK/
+```
 
-Currently this allows a person to send scores to leaderboard and send achievement completion.
-
-Also you can trigger the Gamecircle to show up the leaderboards from in game button.
-
-Also Whispersync is there but can only sync a single number. Whispersync support is very very limited.
