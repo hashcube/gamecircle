@@ -6,8 +6,7 @@
       "gamecircle": "js"
     },
     "extensions": {
-      "android": "android",
-      "ios": "ios"
+      "android": "android"
     }
   }
 }
