@@ -194,7 +194,7 @@ public class GameCirclePlugin implements IPlugin {
 		//logger.log(achievementID);
 		//logger.log(percentSolved);
 		//logger.log("============");
-		AGResponseHandle<UpdateProgressResponse> handle = acClient.updateProgress(achievementID, percentSolved);
+		AGResponseHandle<UpdateProgressResponse> handle = acClient.updateProgress(achievementID, 100.0F);
 	}
 
 	public void showLeaderBoard(String dummyParam)
