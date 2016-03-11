@@ -80,13 +80,21 @@ public class GameCirclePlugin implements IPlugin {
 	    AmazonGamesClient.initialize(_activity, callback, myGameFeatures);
 	}
 
+	public void onRenderResume() {
+	}
+
 	public void onStart() {
 	}
 
+	public void onFirstRun() {
+	}
 	public void onPause() {
 		if (agsClient != null) {
         	agsClient.release();
     	}
+	}
+
+	public void onRenderPause() {
 	}
 
 	public void onStop() {
