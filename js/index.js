@@ -39,6 +39,10 @@ var Gamecircle = Class(function () {
 		});
 	}
 
+	this.login = function (cb) {
+		cb(true);
+	};
+
 	this.sendAchievement = function(achievementID, percentSolved) {
 		logger.log("{gamecircle} Sending of achievement");
 
