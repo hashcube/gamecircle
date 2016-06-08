@@ -46,7 +46,7 @@ var Gamecircle = Class(function () {
 	this.sendAchievement = function(achievementID, percentSolved) {
 		logger.log("{gamecircle} Sending of achievement");
 
-		var param = {"achievementID":achievementID,"percentSolved":percentSolved};
+		var param = {"achievementID":achievementID,"percentSolved":percentSolved || 100};
 
 		pluginSend("sendAchievement",param);
 	}
