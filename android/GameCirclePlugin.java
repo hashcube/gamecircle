@@ -160,50 +160,35 @@ public class GameCirclePlugin implements IPlugin {
 	public void onBackPressed() {
 	}
 
-	public void sendAchievement(String param)
-	{
-		logger.log("{gamecircle-native} Inside sendAchievement");
-	    final Bundle params = new Bundle();
-	    //logger.log(1);
-	    String achievementID = "";
-	    //logger.log(2);
-	    Float percentSolved = 0F;
-	    //logger.log(3);
-	    try {
-	    	JSONObject ldrData = new JSONObject(param);	
-	    	//logger.log(4);
-	        Iterator<?> keys = ldrData.keys();
-	        //logger.log(5);
-	        while( keys.hasNext() ){
-	        	//logger.log(6);
-	            String key = (String)keys.next();
-	            //logger.log(7);
-	    		Object o = ldrData.get(key);
-	    		//logger.log(8);
-	    		if(key.equals("achievementID")){
-	    			//logger.log(9);
-	    			achievementID = (String) o;
-	    			continue;
-	    		}
-	    		if(key.equals("percentSolved")){
-	    			//logger.log(10);
-	    			percentSolved = new Float(o.toString());
-	    			continue;
-	    		}
-	    		//logger.log(11);
-	    		params.putString(key, (String) o);
-	        }
-		} catch(JSONException e) {
-			logger.log("{gamecircle-native} Error in Params of sendAchievement because "+ e.getMessage());
-		}
-		//logger.log(12);
-		AchievementsClient acClient = agsClient.getAchievementsClient();
-		//logger.log(13);
-		//logger.log(achievementID);
-		//logger.log(percentSolved);
-		//logger.log("============");
-		AGResponseHandle<UpdateProgressResponse> handle = acClient.updateProgress(achievementID, 100.0F);
-	}
+        public void sendAchievement(String param)
+        {
+            logger.log("{gamecircle-native} Inside sendAchievement");
+            final Bundle params = new Bundle();
+            String achievementID = "";
+            Float percentSolved = 100F;
+            try {
+                JSONObject ldrData = new JSONObject(param);
+                Iterator<?> keys = ldrData.keys();
+                while (keys.hasNext()) {
+                    String key = (String)keys.next();
+                    Object o = ldrData.get(key);
+                    if (key.equals("achievementID")) {
+                        achievementID = (String) o;
+                        continue;
+                    }
+                    if (key.equals("percentSolved")) {
+                        percentSolved = new Float(o.toString());
+                        continue;
+                    }
+                    params.putString(key, (String) o);
+                }
+
+                AchievementsClient acClient = agsClient.getAchievementsClient();
+                AGResponseHandle<UpdateProgressResponse> handle = acClient.updateProgress(achievementID, percentSolved);
+            } catch(JSONException e) {
+              logger.log("{gamecircle-native} Error in Params of sendAchievement because "+ e.getMessage());
+            }
+        }
 
 	public void showLeaderBoard(String dummyParam)
 	{
