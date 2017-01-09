@@ -48,6 +48,7 @@ var Gamecircle = Class(function () {
 
 		var param = {"achievementID":achievementID,"percentSolved":percentSolved || 100};
 
+		achievementID = achievementID.replace('-', '');
 		pluginSend("sendAchievement",param);
 	}
 
