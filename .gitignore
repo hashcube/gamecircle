@@ -25,9 +25,12 @@ android/GameCircleSDK/local.properties
 android/GameCircleSDK/idea
 .DS_Store
 android/GameCircleSDK/DS_Store
-!/android/GameCircleSDK/gamecirclesdk/build
-/android/GameCircleSDK/gamecirclesdk/build/**
-!/android/GameCircleSDK/gamecirclesdk/build/outputs/aar/
+
+!android/GameCircleSDK/gamecirclesdk/build
+android/GameCircleSDK/gamecirclesdk/build/*
+!android/GameCircleSDK/gamecirclesdk/build/outputs
+android/GameCircleSDK/gamecirclesdk/build/outputs/*
+!android/GameCircleSDK/gamecirclesdk/build/outputs/aar/
 
 
 
