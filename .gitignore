@@ -28,10 +28,10 @@ android/freshchat_sdk/captures
 .DS_Store
 android/GameCircleSDK/DS_Store
 
-!android/GameCircleSDK/gamecirclesdk/build
-android/GameCircleSDK/gamecirclesdk/build/*
-!android/GameCircleSDK/gamecirclesdk/build/outputs
-android/GameCircleSDK/gamecirclesdk/build/outputs/*
-!android/GameCircleSDK/gamecirclesdk/build/outputs/aar/
+!/android/GameCircleSDK/gamecirclesdk/build
+/android/GameCircleSDK/gamecirclesdk/build/*
+!/android/GameCircleSDK/gamecirclesdk/build/outputs
+/android/GameCircleSDK/gamecirclesdk/build/outputs/*
+!/android/GameCircleSDK/gamecirclesdk/build/outputs/aar
 
 
