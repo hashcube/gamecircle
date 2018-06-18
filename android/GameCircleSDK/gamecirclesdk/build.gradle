@@ -25,8 +25,8 @@ android {
 }
 
 dependencies {
-    implementation files('libs/AmazonInsights-android-sdk-2.1.10.jar')
-    implementation files('libs/gamecirclesdk.jar')
-    implementation files('libs/login-with-amazon-sdk.jar')
+    api files('libs/AmazonInsights-android-sdk-2.1.10.jar')
+    api files('libs/gamecirclesdk.jar')
+    api files('libs/login-with-amazon-sdk.jar')
 }
 
