@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="__local_aars__:/Users/alex/codeworks/YG/reposAndroid/devkitworks/plugins/ant/gamecircle/android/GameCircleSDKLibrary/GameCircleSDK/libs/gamecirclesdk.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/GameCircleSDK/libs/gamecirclesdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
