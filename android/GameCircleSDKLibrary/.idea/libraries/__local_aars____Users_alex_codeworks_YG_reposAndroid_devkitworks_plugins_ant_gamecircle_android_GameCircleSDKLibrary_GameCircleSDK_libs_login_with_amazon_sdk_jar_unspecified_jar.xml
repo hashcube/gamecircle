@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="__local_aars__:/Users/alex/codeworks/YG/reposAndroid/devkitworks/plugins/ant/gamecircle/android/GameCircleSDKLibrary/GameCircleSDK/libs/login-with-amazon-sdk.jar:unspecified@jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/GameCircleSDK/libs/login-with-amazon-sdk.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -17,21 +17,29 @@ node_modules
 
 local.properties
 
+# Gradle
+.gradle
 
+# Intellij project files
 *.iml
-android/GameCircleSDK/.gradle
-android/GameCircleSDK/local.properties
-android/GameCircleSDK/.idea
-android/GameCircleSDK/build/android-profile
-android/freshchat_sdk/captures
+*.ipr
+*.iws
+.idea/
+
+android/GameCircleSDKLibrary/.gradle
+android/GameCircleSDKLibrary/local.properties
+android/GameCircleSDKLibrary/.idea
+android/GameCircleSDKLibrary/.idea/
+android/GameCircleSDKLibrary/build/android-profile
+android/GameCircleSDKLibrary/captures
 
 .DS_Store
 android/GameCircleSDK/DS_Store
 
-!/android/GameCircleSDK/gamecirclesdk/build
-/android/GameCircleSDK/gamecirclesdk/build/*
-!/android/GameCircleSDK/gamecirclesdk/build/outputs
-/android/GameCircleSDK/gamecirclesdk/build/outputs/*
-!/android/GameCircleSDK/gamecirclesdk/build/outputs/aar
+!/android/GameCircleSDKLibrary/GameCircleSDK/build
+/android/GameCircleSDKLibrary/GameCircleSDK/build/*
+!/android/GameCircleSDKLibrary/GameCircleSDK/build/outputs
+/android/GameCircleSDKLibrary/GameCircleSDK/build/outputs/*
+!/android/GameCircleSDKLibrary/GameCircleSDK/build/outputs/aar
 
 

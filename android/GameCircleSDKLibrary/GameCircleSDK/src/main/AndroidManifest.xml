@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application android:label="GameCircleSDK">
+    <application>
         <activity
             android:name="com.amazon.ags.html5.overlay.GameCircleUserInterface"
             android:hardwareAccelerated="false"
