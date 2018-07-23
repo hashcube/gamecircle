@@ -3,7 +3,7 @@
         "GameCirclePlugin.java"
     ],
     "jars": [
-    "GameCircleSDKLibrary/GameCircleSDK/build/outputs/aar/GameCircleSDK-debug.aar"
+        "GameCircleSDKLibrary/GameCircleSDK/build/outputs/aar/GameCircleSDK-debug.aar"
     ],
     "injectionXML": "manifest.xml",
 	"injectionXSL": "manifest.xsl"
