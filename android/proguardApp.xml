@@ -1,7 +1,6 @@
 #<!--START_PLUGINS_PROGUARD-->
   #<!--gamecircle Dependencies-->
--keep public class com.amazon.** {
-   public *;
-}
+-keep class com.amazon.** {*;}
 -dontwarn com.amazon.**
+-keepattributes *Annotation*
 #<!--END_PLUGINS_PROGUARD-->
