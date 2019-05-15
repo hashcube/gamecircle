@@ -1,6 +1,6 @@
 {
   "name": "gamecircle",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "devkit": {
     "clientPaths": {
       "gamecircle": "js"
